@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ShopSphere — a responsive demo storefront with product management and shopping cart.">
+  <title>ShopSphere | Discover your next favorite</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="announcement">A little something for your everyday <span>✦</span> Free shipping on demo orders over $75</div>
+  <header class="site-header">
+    <a class="brand" href="#" aria-label="ShopSphere home"><span class="brand-mark">S</span> shop<span>sphere</span></a>
+    <form class="search-form" id="searchForm" role="search">
+      <label class="sr-only" for="searchInput">Search products</label>
+      <span aria-hidden="true">⌕</span>
+      <input id="searchInput" type="search" placeholder="Search products, brands..." autocomplete="off">
+      <button type="submit">Search</button>
+    </form>
+    <nav class="header-actions" aria-label="Main actions">
+      <button class="text-action" id="accountButton" type="button"><span aria-hidden="true">♙</span> <span id="accountLabel">Sign in</span></button>
+      <button class="cart-button" id="cartButton" type="button" aria-label="Open shopping cart">Bag <span id="cartCount">0</span></button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="heroTitle">
+      <div class="hero-copy">
+        <p class="eyebrow"><span></span> THE EVERYDAY EDIT</p>
+        <h1 id="heroTitle">Good things.<br><em>Better living.</em></h1>
+        <p class="hero-description">Thoughtful finds for your space, your style, and the little moments in between.</p>
+        <button class="primary-button" id="shopNowButton" type="button">Explore the collection <span aria-hidden="true">↗</span></button>
+        <div class="hero-proof"><span class="proof-stars">★★★★★</span> <span>Loved by curious shoppers</span></div>
+      </div>
+      <div class="hero-art" aria-label="Featured home and lifestyle products">
+        <div class="art-orb"></div>
+        <div class="art-card art-card-back"><span>slow<br>mornings</span></div>
+        <div class="art-product"><img src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=900&q=85" alt="Ceramic mug and tea on a table"></div>
+        <div class="art-sticker">MADE FOR<br>YOUR EVERYDAY <span>✳</span></div>
+        <div class="art-caption">Small details. Big joy.</div>
+      </div>
+    </section>
+
+    <section class="benefit-strip" aria-label="Store benefits">
+      <div><span>✦</span><p><strong>Curated finds</strong><small>Picked with purpose</small></p></div>
+      <div><span>♧</span><p><strong>Better materials</strong><small>Made to be enjoyed</small></p></div>
+      <div><span>♡</span><p><strong>Easy shopping</strong><small>A little less hassle</small></p></div>
+      <div><span>↗</span><p><strong>Fresh inspiration</strong><small>Something new to love</small></p></div>
+    </section>
+
+    <section class="catalog section-wrap" id="catalog" aria-labelledby="catalogTitle">
+      <div class="section-heading">
+        <div><p class="eyebrow">THE GOOD STUFF</p><h2 id="catalogTitle">Find your <em>favorite.</em></h2></div>
+        <p class="section-note">Useful, lovely, and ready for everyday life.</p>
+      </div>
+      <div class="catalog-toolbar">
+        <div class="category-list" id="categoryFilters" aria-label="Filter by category">
+          <button class="filter-chip active" data-category="All" type="button">All finds</button>
+          <button class="filter-chip" data-category="Home" type="button">Home</button>
+          <button class="filter-chip" data-category="Tech" type="button">Tech</button>
+          <button class="filter-chip" data-category="Style" type="button">Style</button>
+          <button class="filter-chip" data-category="Wellness" type="button">Wellness</button>
+        </div>
+        <label class="sort-control">Sort by
+          <select id="sortSelect" aria-label="Sort products">
+            <option value="featured">Featured</option>
+            <option value="price-low">Price: low to high</option>
+            <option value="price-high">Price: high to low</option>
+            <option value="name">Name: A–Z</option>
+          </select>
+        </label>
+      </div>
+      <p id="resultsSummary" class="results-summary" aria-live="polite"></p>
+      <div class="product-grid" id="productGrid"></div>
+      <div class="empty-state hidden" id="emptyState"><span>⌕</span><h3>No finds just yet</h3><p>Try another search or category.</p><button class="secondary-button" id="resetFiltersButton" type="button">Reset filters</button></div>
+    </section>
+
+    <section class="newsletter">
+      <div><p class="eyebrow">A NOTE FROM US</p><h2>Good finds, <em>in your inbox.</em></h2><p>Get fresh picks and everyday inspiration. No spam, just the good stuff.</p></div>
+      <form id="newsletterForm" class="newsletter-form"><label class="sr-only" for="newsletterEmail">Email address</label><input id="newsletterEmail" type="email" placeholder="Your email address" required><button class="primary-button" type="submit">Count me in ↗</button></form>
+      <p class="newsletter-message" id="newsletterMessage" aria-live="polite"></p>
+    </section>
+
+    <section class="admin-section section-wrap" id="adminSection" aria-labelledby="adminTitle">
+      <div class="section-heading admin-heading"><div><p class="eyebrow">DEMO ADMIN WORKSPACE</p><h2 id="adminTitle">Manage the <em>collection.</em></h2></div><span class="admin-tag">CRUD DEMO</span></div>
+      <p class="admin-intro">Use this workspace to add, edit, and remove products. Changes are saved in this browser.</p>
+      <form id="productForm" class="product-form">
+        <input type="hidden" id="productId">
+        <div class="form-field"><label for="productName">Product name</label><input id="productName" maxlength="70" required placeholder="e.g. Everyday ceramic mug"></div>
+        <div class="form-field"><label for="productCategory">Category</label><select id="productCategory" required><option>Home</option><option>Tech</option><option>Style</option><option>Wellness</option></select></div>
+        <div class="form-field"><label for="productPrice">Price ($)</label><input id="productPrice" type="number" min="0.01" max="99999" step="0.01" required placeholder="24.00"></div>
+        <div class="form-field"><label for="productImage">Image URL</label><input id="productImage" type="url" placeholder="https://example.com/image.jpg"></div>
+        <div class="form-field form-field-wide"><label for="productDescription">Short description</label><input id="productDescription" maxlength="180" required placeholder="A useful little detail about this product"></div>
+        <div class="form-actions"><button class="primary-button" type="submit" id="saveProductButton">Add product</button><button class="secondary-button hidden" type="button" id="cancelEditButton">Cancel edit</button><span id="formMessage" aria-live="polite"></span></div>
+      </form>
+      <div class="admin-table-wrap"><table class="admin-table"><caption class="sr-only">Current products with edit and delete controls</caption><thead><tr><th scope="col">Product</th><th scope="col">Category</th><th scope="col">Price</th><th scope="col">Actions</th></tr></thead><tbody id="adminProductRows"></tbody></table></div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><a class="brand footer-brand" href="#"><span class="brand-mark">S</span> shop<span>sphere</span></a><p>Thoughtful finds for everyday living.</p><p>© <span id="currentYear"></span> ShopSphere Capstone. Demo project.</p></footer>
+
+  <div class="overlay hidden" id="overlay"></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-labelledby="cartTitle" aria-hidden="true">
+    <div class="drawer-header"><div><p class="eyebrow">YOUR PICKS</p><h2 id="cartTitle">Shopping bag <span id="drawerCartCount">(0)</span></h2></div><button class="icon-button" id="closeCartButton" aria-label="Close shopping cart" type="button">×</button></div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-empty" id="cartEmpty"><span>♡</span><h3>Your bag is taking a break.</h3><p>Add a few good things to get started.</p></div>
+    <div class="cart-footer"><div class="subtotal-row"><span>Subtotal</span><strong id="cartSubtotal">$0.00</strong></div><p>Demo checkout only. No payment will be collected.</p><button class="primary-button checkout-button" id="checkoutButton" type="button">Continue to checkout ↗</button><button class="secondary-button full-width" id="continueShoppingButton" type="button">Continue shopping</button></div>
+  </aside>
+
+  <dialog class="auth-dialog" id="authDialog" aria-labelledby="authTitle">
+    <button class="dialog-close icon-button" id="closeAuthButton" type="button" aria-label="Close sign-in dialog">×</button>
+    <p class="eyebrow">WELCOME TO SHOPSPHERE</p><h2 id="authTitle">Good to see <em>you.</em></h2><p class="auth-subtitle">Sign in or create a demo account to try the experience.</p>
+    <div class="auth-tabs"><button type="button" class="auth-tab active" data-auth-mode="login">Sign in</button><button type="button" class="auth-tab" data-auth-mode="register">Create account</button></div>
+    <form id="authForm" class="auth-form">
+      <div class="form-field" id="authNameField"><label for="authName">Your name</label><input id="authName" autocomplete="name" placeholder="Alex Morgan"></div>
+      <div class="form-field"><label for="authEmail">Email address</label><input id="authEmail" type="email" autocomplete="email" required placeholder="you@example.com"></div>
+      <div class="form-field"><label for="authPassword">Password</label><input id="authPassword" type="password" autocomplete="current-password" minlength="4" required placeholder="At least 4 characters"></div>
+      <p class="demo-hint">Demo only: credentials are stored in this browser and are not secure.</p>
+      <p class="auth-message" id="authMessage" aria-live="polite"></p><button class="primary-button full-width" id="authSubmitButton" type="submit">Sign in ↗</button>
+    </form>
+  </dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
