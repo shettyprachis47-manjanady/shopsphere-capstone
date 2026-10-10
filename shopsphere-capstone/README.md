@@ -86,8 +86,8 @@ The browser renders the UI. JavaScript handles user actions and updates applicat
 
 ## Capstone deliverables
 
-- GitHub source repository: _add your repository URL here_
-- Live deployment: _add your Vercel URL here_
+- GitHub source repository: 
+- Live deployment:https://shopsphere-capstone-theta.vercel.app/
 - Screenshots: _add screenshots to a `screenshots/` folder and link them here if required_
 
 ## License
